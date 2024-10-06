@@ -37,6 +37,7 @@ function App() {
       content = <p className="text-center">Loading...</p>;
       if(!isLoading && success) 
         content = <>
+        <p className="text-center">By Eng.Mohammad Wahid Albadawi</p>
           <TopSection date={date}/>
           <ButtomSection timings={timings}/>
         </>
