@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-family: "Cairo", sans-serif;
+  direction: rtl;
+}
+.my-container {
+  background-image: url("./assets/photo_2024-10-04_19-07-28.jpg");
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+}
+.main-dev {
+  background-color: #332a224e;
+  backdrop-filter: blur(10px);
+}
