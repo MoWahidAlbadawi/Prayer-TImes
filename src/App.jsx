@@ -4,7 +4,12 @@ import TopSection from "./components/TopSection"
 import { myContext } from "./store/Context";
 
 function App() {
-  const ctx = useContext(myContext);
+  const currentDate = new Date();
+  const year = String(currentDate.getFullYear());
+  const month = String((currentDate.getMonth()+1) <10 ? '0' + (currentDate.getMonth() +1) : (currentDate.getMonth() + 1));
+  const day = (currentDate.getDate()) <10 ? '0' + currentDate.getDate() : currentDate.getDate();
+  const today = `${day}-${month}-${year}`;
+   const ctx = useContext(myContext);
   const [date , setDate] = useState('');
   const [timings , setTimings] = useState({});
   const [error , setError] = useState(null);
@@ -13,7 +18,7 @@ function App() {
   async function fetchingData () {
     setIsLoading(true);
     try {
-      const response = await fetch(`https://api.aladhan.com/v1/timingsByCity/05-10-2024?city=Eg&country=${ctx.city}`);
+      const response = await fetch(`https://api.aladhan.com/v1/timingsByCity/${today}?city=Eg&country=${ctx.city}`);
       if(!response.ok) {
         throw new Error ('fetch failed!');
       }
