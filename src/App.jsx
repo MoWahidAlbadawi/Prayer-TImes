@@ -26,6 +26,7 @@ function App() {
       setDate(data.data.date.gregorian.date);
       setTimings(data.data.timings);
       setSuccess(true);
+      console.log(data.data.timings);
     }
     catch (error) {
       setError(error.message);
