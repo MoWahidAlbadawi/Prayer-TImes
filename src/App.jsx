@@ -14,7 +14,6 @@ function App() {
   const [timings , setTimings] = useState({});
   const [error , setError] = useState(null);
   const [isLoading , setIsLoading] = useState(false);
-  const [success , setSuccess] = useState(false);
   async function fetchingData () {
     setIsLoading(true);
     try {
@@ -25,8 +24,6 @@ function App() {
       const data = await response.json();
       setDate(data.data.date.gregorian.date);
       setTimings(data.data.timings);
-      setSuccess(true);
-      console.log(data.data.timings);
     }
     catch (error) {
       setError(error.message);
@@ -41,7 +38,7 @@ function App() {
     content = <p className="text-center">!something wrong please try again</p>;
     if(isLoading) 
       content = <p className="text-center">Loading...</p>;
-      if(!isLoading && success) 
+      if(!isLoading && !error) 
         content = <>
         <p className="text-center">By Eng.Mohammad Wahid Albadawi</p>
           <TopSection date={date}/>
@@ -50,7 +47,7 @@ function App() {
   return (
     <section>
       <div className="my-container flex items-center text-white">
-        <div className="main-dev mr-10 lg:mr-40 p-6 rounded w-3/4 md:w-1/2 border-2 border-solid border-slate-400">
+        <div className="main-dev mr-10 md:mr-40 p-6 rounded w-3/4 md:w-1/2 border-2 border-solid border-slate-400">
         {content}
         </div>
       </div>
